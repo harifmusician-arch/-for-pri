@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secret Vault 🔒</title>
+    <link rel="stylesheet" href="../../style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="stars"></div>
+
+<div class="hero">
+
+    <h1>🔒 Secret Vault</h1>
+
+    <p id="quote">
+        Some words were meant only for you.
+    </p>
+
+    <input
+        type="password"
+        id="password"
+        placeholder="Enter Password"
+        class="password-box"
+    >
+
+    <br>
+
+    <button class="btn" onclick="checkPassword()">
+        Unlock ❤️
+    </button>
+
+    <br><br>
+
+    <a href="../../home.html" class="btn">
+        Home
+    </a>
+
+</div>
+
+<script>
+
+function checkPassword(){
+
+    const password =
+    document.getElementById("password").value;
+
+    if(password === "priyanka"){
+
+        window.location.href =
+        "vault.html";
+
+    }else{
+
+        alert("Wrong password ❤️");
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

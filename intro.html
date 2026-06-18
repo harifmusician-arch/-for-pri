@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Loading...</title>
+
+<link rel="stylesheet" href="style.css">
+
+<meta http-equiv="refresh" content="8;url=home.html">
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<div class="cinematic-container">
+
+    <div class="cinematic-text">
+
+        <p class="line line1">
+            Loading Memories...
+        </p>
+
+        <p class="line line2">
+            Gathering 2000+ Screenshots...
+        </p>
+
+        <p class="line line3">
+            Restoring Important Moments...
+        </p>
+
+        <p class="line line4">
+            Welcome Back, Pri.
+        </p>
+
+    </div>
+
+</div>
+
+<script>
+
+window.onload = () => {
+
+    if(sessionStorage.getItem("playMusic")){
+
+        const music =
+        document.getElementById("bgMusic");
+
+        music.play();
+
+    }
+
+};
+
+</script>
+
+<audio id="bgMusic" loop>
+
+    <source
+    src="assets/audio/songs/Tu jane na(for her) .mp3"
+    type="audio/mpeg">
+
+</audio>
+
+<script>
+
+const music =
+document.getElementById("bgMusic");
+
+music.play();
+
+localStorage.setItem(
+    "musicPlaying",
+    "true"
+);
+
+</script>
+
+<button id="musicBtn"
+        class="music-btn">
+
+    🎵
+
+</button>
+
+</body>
+
+<audio id="bgMusic" loop>
+    <source src="assets/audio/songs/Tu jane na(for her) .mp3" type="audio/mpeg">
+</audio>
+
+</html>
