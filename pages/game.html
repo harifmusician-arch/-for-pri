@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+   content="width=device-width, initial-scale=1.0">
+
+<title>One Final Challenge ❤️</title>
+
+<link rel="stylesheet"
+      href="../style.css">
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<section class="hero">
+
+```
+<h1>🎮 One Final Challenge</h1>
+
+<p id="quote">
+
+    Before you unlock the final page...
+
+    let's see how much you remember.
+
+    ❤️
+
+</p>
+```
+
+</section>
+
+<section class="timeline">
+
+```
+<div class="event">
+
+    <h2>💬 When was our first call?</h2>
+
+    <select id="q1">
+
+        <option value="">Select</option>
+        <option>21 Mar 2026</option>
+        <option>24 Apr 2026</option>
+        <option>4 Mar 2026</option>
+
+    </select>
+
+</div>
+
+<div class="event">
+
+    <h2>🌙 Which of these is on our bucket list?</h2>
+
+    <select id="q2">
+
+        <option value="">Select</option>
+        <option>Climb Everest</option>
+        <option>Badminton Date</option>
+        <option>Learn French</option>
+
+    </select>
+
+</div>
+
+<div class="event">
+
+    <h2>💌 When was the confession?</h2>
+
+    <select id="q3">
+
+        <option value="">Select</option>
+        <option>4 Mar 2026</option>
+        <option>24 Apr 2026</option>
+        <option>8 Feb 2026</option>
+
+    </select>
+
+</div>
+
+<br><br>
+
+<button class="btn"
+        onclick="checkAnswers()">
+
+    Unlock ❤️
+
+</button>
+```
+
+</section>
+
+<script>
+
+function checkAnswers(){
+
+    const q1 =
+    document.getElementById("q1").value;
+
+    const q2 =
+    document.getElementById("q2").value;
+
+    const q3 =
+    document.getElementById("q3").value;
+
+    if(
+        q1 === "24 Apr 2026" &&
+        q2 === "Badminton Date" &&
+        q3 === "4 Mar 2026"
+    ){
+
+        window.location.href =
+        "final-question.html";
+
+    }
+
+    else{
+
+        alert(
+            "Almost 😋 Try again ❤️"
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>
