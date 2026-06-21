@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Video Vault ❤️</title>
+
+<link rel="stylesheet"
+      href="../style.css">
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<section class="hero">
+
+    <h1>🎥 Video Vault</h1>
+
+    <p id="quote">
+
+        A few things I wanted to say.
+
+        ❤️
+
+    </p>
+
+    <input
+    type="password"
+    id="password"
+    class="password-box"
+    placeholder="Enter Password">
+
+    <br><br>
+
+    <button
+    class="btn"
+    onclick="checkPassword()">
+
+        Unlock
+
+    </button>
+
+</section>
+
+<script>
+
+function checkPassword(){
+
+    const pass =
+    document.getElementById("password").value;
+
+    if(pass === "forpri"){
+
+        window.location.href =
+        "vms.html";
+
+    }
+
+    else{
+
+        alert(
+        "Wrong password ❤️");
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>
