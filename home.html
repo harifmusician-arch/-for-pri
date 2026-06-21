@@ -18,9 +18,23 @@
 
 <div class="stars"></div>
 
+
+
 <section class="hero">
 
     <h1>For Pri ❤️</h1>
+
+    <div class="love-counter">
+
+    <h2>💌 Since The Confession</h2>
+
+    <div id="counter">
+
+        Loading...
+
+    </div>
+
+</div>
 
     <p id="quote">
 
@@ -39,16 +53,8 @@ Like coming home to a place I had never been before.
 
 </section>
 
-<!-- <section class="countdown">
 
-    <h2>🎂 Pri's Birthday</h2>
 
-    <p>
-        July 13th 2026
-    </p>
-
-</section>
--->
 <!-- POLAROID WALL -->
 
 <section class="memory-wall">
@@ -310,6 +316,59 @@ onclick="toggleMusic()">
 
 <script src="music.js"></script>
 
+<script>
+
+const confessionDate =
+new Date("2026-03-04T01:31:00");
+
+function updateCounter(){
+
+    const now =
+    new Date();
+
+    const diff =
+    now - confessionDate;
+
+    const days =
+    Math.floor(
+        diff / (1000 * 60 * 60 * 24)
+    );
+
+    const hours =
+    Math.floor(
+        (diff % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+    );
+
+    const minutes =
+    Math.floor(
+        (diff % (1000 * 60 * 60))
+        / (1000 * 60)
+    );
+
+    const seconds =
+    Math.floor(
+        (diff % (1000 * 60))
+        / 1000
+    );
+
+    document.getElementById("counter").innerHTML =
+
+    days + " Days ❤️ • " +
+    hours + " Hours 🌙 • " +
+    minutes + " Minutes ✨ • " +
+    seconds + " Seconds ⏳";
+
+}
+
+updateCounter();
+
+setInterval(
+    updateCounter,
+    1000
+);
+
+</script>
 </body>
 
 </html>

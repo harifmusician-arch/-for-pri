@@ -1604,3 +1604,88 @@ button.btn{
     border:none;
 
 }
+
+/* CONFESSION COUNTER */
+
+.love-counter{
+
+    margin:40px auto 0;
+
+    padding:25px 30px;
+
+    max-width:900px;
+
+    text-align:center;
+
+    border-radius:25px;
+
+    background:
+    rgba(255,255,255,.05);
+
+    border:
+    1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:
+    blur(20px);
+
+    box-shadow:
+    0 0 30px rgba(255,79,139,.08);
+
+}
+
+.love-counter h2{
+
+    margin-bottom:10px;
+
+    font-size:1.4rem;
+
+    color:white;
+
+}
+
+#counter{
+
+    margin-top:10px;
+
+    font-size:1.25rem;
+
+    font-weight:700;
+
+    color:#ff7cb3;
+
+    text-shadow:
+    0 0 20px rgba(255,124,179,.25);
+
+    white-space:nowrap;
+
+    overflow-x:auto;
+
+    scrollbar-width:none;
+
+}
+
+#counter::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .love-counter{
+
+        max-width:95%;
+
+        padding:20px;
+
+    }
+
+    #counter{
+
+        font-size:1rem;
+
+    }
+
+}
