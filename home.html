@@ -53,8 +53,97 @@ Like coming home to a place I had never been before.
 
 </section>
 
+<div class="pri-panel">
 
+    <button class="miss-me-btn"
+    onclick="sendAlert('❤️ Pri misses you')">
+        ❤️ I Miss You
+    </button>
 
+    <button class="miss-me-btn"
+    onclick="sendAlert('📍 Pri wants to know where you are')">
+        📍 Where Are You?
+    </button>
+
+    <button class="miss-me-btn"
+    onclick="sendAlert('💪 Pri requested bicep pics')">
+        💪 Send Bicep Pics
+    </button>
+
+    <button class="miss-me-btn"
+    onclick="sendAlert('🤒 Pri is not feeling well')">
+        🤒 Not Feeling Well
+    </button>
+
+    <button class="miss-me-btn"
+    onclick="sendAlert('😴 Pri is going to sleep')">
+        😴 Going To Sleep
+    </button>
+
+    <button class="miss-me-btn"
+    onclick="sendAlert('🌙 Pri cannot sleep')">
+        🌙 Can't Sleep
+    </button>
+
+    <button class="miss-me-btn"
+    onclick="sendAlert('🫂 Pri needs a hug')">
+        🫂 Need A Hug
+    </button>
+
+</div>
+
+<div class="signal-menu">
+
+    <button
+    class="signal-toggle"
+    onclick="toggleSignals()">
+
+        📡 Send Signal ❤️
+
+    </button>
+
+    <div
+    id="signalButtons"
+    class="signal-buttons">
+
+        <button class="miss-me-btn"
+        onclick="sendAlert('❤️ Pri misses you')">
+            ❤️ I Miss You
+        </button>
+
+        <button class="miss-me-btn"
+        onclick="sendAlert('📍 Pri wants to know where you are')">
+            📍 Where Are You?
+        </button>
+
+        <button class="miss-me-btn"
+        onclick="sendAlert('💪 Pri requested bicep pics')">
+            💪 Send Bicep Pics
+        </button>
+
+        <button class="miss-me-btn"
+        onclick="sendAlert('🤒 Pri is not feeling well')">
+            🤒 Not Feeling Well
+        </button>
+
+        <button class="miss-me-btn"
+        onclick="sendAlert('😴 Pri is going to sleep')">
+            😴 Going To Sleep
+        </button>
+
+        <button class="miss-me-btn"
+        onclick="sendAlert('🌙 Pri cannot sleep')">
+            🌙 Can't Sleep
+        </button>
+
+        <button class="miss-me-btn"
+        onclick="sendAlert('🫂 Pri needs a hug')">
+            🫂 Need A Hug
+        </button>
+
+    </div>
+
+</div>
 <!-- POLAROID WALL -->
 
 <section class="memory-wall">
@@ -369,6 +458,8 @@ setInterval(
 );
 
 </script>
+
+<script src="missme.js"></script>
 </body>
 
 </html>
