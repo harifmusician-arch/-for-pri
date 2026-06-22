@@ -79,17 +79,7 @@ ${message}
 
     }
 
-    setTimeout(() => {
-
-        buttons.forEach(btn => {
-
-            btn.disabled = false;
-
-            btn.style.opacity = "1";
-
-        });
-
-    }, 60000);
+    
 
 }
 
