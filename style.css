@@ -2278,3 +2278,47 @@ button.btn{
     translateY(-3px);
 
 }
+
+/* PRICOIN CHART */
+
+.chart{
+
+    height:250px;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:center;
+
+    gap:12px;
+
+    margin:30px auto;
+
+}
+
+.bar{
+
+    width:40px;
+
+    border-radius:10px 10px 0 0;
+
+    background:
+    linear-gradient(
+        to top,
+        #00ff88,
+        #7cffb3
+    );
+
+    box-shadow:
+    0 0 20px rgba(0,255,136,.25);
+
+}
+
+.h1{height:30px;}
+.h2{height:50px;}
+.h3{height:90px;}
+.h4{height:130px;}
+.h5{height:170px;}
+.h6{height:210px;}
+.h7{height:250px;}

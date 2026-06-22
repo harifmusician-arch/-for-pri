@@ -73,47 +73,42 @@
 </div>
 
 
-<section class="hero whitepaper">
+<section class="hero">
 
 ```
-<h2>⚠️ Risk Disclosure</h2>
+<h2>📈 PriCoin Performance</h2>
+
+<div class="chart">
+
+    <div class="bar h1"></div>
+
+    <div class="bar h2"></div>
+
+    <div class="bar h3"></div>
+
+    <div class="bar h4"></div>
+
+    <div class="bar h5"></div>
+
+    <div class="bar h6"></div>
+
+    <div class="bar h7"></div>
+
+</div>
 
 <p>
 
-    PriCoin is backed by:
+    Performance since launch:
 
-    <br><br>
+    +69,420%
 
-    • Delusion
-
-    <br>
-
-    • Hope
-
-    <br>
-
-    • Spotify Playlists
-
-    <br>
-
-    • Sleep Deprivation
-
-    <br>
-
-    • One Very Dedicated Developer
-
-    <br><br>
-
-    Past performance does not guarantee future feelings.
-
-    <br><br>
-
-    This is not financial advice.
+    🚀🌙
 
 </p>
 ```
 
 </section>
+
 
 ```
 
@@ -145,11 +140,26 @@ onclick="alert('⛏️ Mining unavailable. Emotional network congestion detected
 
 </section>
 
+<section class="hero">
 
+    <h2>⛏️ Mine PriCoin</h2>
+
+    <p id="wallet">
+        Wallet: 0 PriCoins
+    </p>
+
+    <button
+    class="mine-btn"
+    onclick="mineCoin()">
+
+        ⛏️ Mine PriCoin
+
+    </button>
+
+</section>
 <script>
 
 const prices = [
-
     69.42,
     143.72,
     187.33,
@@ -157,26 +167,19 @@ const prices = [
     777.77,
     999.99,
     1337.00
-
 ];
 
 const changes = [
-
     "+2.1%",
     "+12.4%",
     "+69%",
     "+420%",
     "-3.2%",
     "+0.69%"
-
 ];
 
-document.getElementById(
-    "price"
-).innerText =
-
+document.getElementById("price").innerText =
 "₹" +
-
 prices[
     Math.floor(
         Math.random() *
@@ -184,10 +187,7 @@ prices[
     )
 ];
 
-document.getElementById(
-    "change"
-).innerText =
-
+document.getElementById("change").innerText =
 changes[
     Math.floor(
         Math.random() *
@@ -195,9 +195,7 @@ changes[
     )
 ];
 
-let wallet =
-
-parseInt(
+let wallet = parseInt(
     localStorage.getItem(
         "pricoinWallet"
     )
@@ -206,14 +204,32 @@ parseInt(
 document.getElementById(
     "wallet"
 ).innerText =
-
 "Wallet: " +
 wallet +
 " PriCoins";
 
+let miningCooldown = false;
+
 function mineCoin(){
 
-    wallet++;
+    if(miningCooldown){
+
+        alert(
+            "⏳ Mining rig cooling down..."
+        );
+
+        return;
+
+    }
+
+    miningCooldown = true;
+
+    const earned =
+    Math.floor(
+        Math.random() * 10
+    ) + 1;
+
+    wallet += earned;
 
     localStorage.setItem(
         "pricoinWallet",
@@ -223,14 +239,30 @@ function mineCoin(){
     document.getElementById(
         "wallet"
     ).innerText =
-
     "Wallet: " +
     wallet +
     " PriCoins";
 
+    alert(
+        "⛏️ Successfully mined " +
+        earned +
+        " PriCoins!"
+    );
+
+    if(wallet >= 100){
+
+        alert(
+            "🐋 ACHIEVEMENT UNLOCKED!\n\nPriCoin Whale"
+        );
+
+    }
+
+    setTimeout(() => {
+
+        miningCooldown = false;
+
+    }, 5000);
+
 }
 
 </script>
-
-</body>
-</html>
