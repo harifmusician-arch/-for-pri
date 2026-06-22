@@ -2,6 +2,19 @@ async function sendAlert(message){
 
     const webhook = "https://discord.com/api/webhooks/1518645891827761265/qC2vc2uWAWGEadbr1hIZHROzGROil0EEk9WmcwYEduR2etGJWjJERloVnsf2okhm2KVj";
 
+    const buttons =
+    document.querySelectorAll(
+        ".miss-me-btn"
+    );
+
+    buttons.forEach(btn => {
+
+        btn.disabled = true;
+
+        btn.style.opacity = ".5";
+
+    });
+
     try{
 
         await fetch(webhook, {
@@ -26,7 +39,9 @@ ${message}
 
         });
 
-        alert("Signal sent ❤️");
+        alert(
+            "Signal sent ❤️\nTry again in 60 seconds."
+        );
 
     }
 
@@ -38,17 +53,16 @@ ${message}
 
     }
 
-}
+    setTimeout(() => {
 
-function toggleSignals(){
+        buttons.forEach(btn => {
 
-    const menu =
-    document.getElementById(
-        "signalButtons"
-    );
+            btn.disabled = false;
 
-    menu.classList.toggle(
-        "show-signals"
-    );
+            btn.style.opacity = "1";
+
+        });
+
+    }, 60000);
 
 }
