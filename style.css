@@ -1861,4 +1861,10 @@ button.btn{
 
 }
 
+.miss-me-btn:disabled{
 
+    opacity:.5;
+
+    cursor:not-allowed;
+
+}
