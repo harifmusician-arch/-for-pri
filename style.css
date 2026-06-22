@@ -2221,3 +2221,60 @@ button.btn{
     }
 
 }
+
+.whitepaper{
+
+    max-width:700px;
+
+    margin:0 auto;
+
+}
+
+#price{
+
+    font-size:2.5rem;
+
+    font-weight:700;
+
+    color:#00ff88;
+
+    text-shadow:
+    0 0 25px rgba(0,255,136,.3);
+
+}
+
+.mine-btn{
+
+    margin-top:20px;
+
+    padding:15px 35px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+    color:#111;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffd700,
+        #ffb700
+    );
+
+    transition:.3s;
+
+}
+
+.mine-btn:hover{
+
+    transform:
+    translateY(-3px);
+
+}
