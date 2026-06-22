@@ -22,7 +22,9 @@
 
 <section class="hero">
 
-    <h1>For Pri ❤️</h1>
+    <h1 id="greeting">
+    For Pri ❤️
+</h1>
 
     <div class="love-counter">
 
@@ -364,6 +366,8 @@ Like coming home to a place I had never been before.
 
 </section>
 
+
+
 <footer>
 
     Built with love,
@@ -467,6 +471,47 @@ emailjs.init({
 </script>
 
 <script src="missme.js"></script>
+
+<script>
+
+function updateGreeting(){
+
+    const hour =
+    new Date().getHours();
+
+    let greeting = "";
+
+    if(hour < 12){
+
+    greeting =
+    "☀️ Good Morning Pri ❤️";
+
+}
+
+else if(hour < 18){
+
+    greeting =
+    "🌤️ Hope You're Having A Good Day Pri ❤️";
+
+}
+
+else{
+
+    greeting =
+    "🌙 Sleep Well When You Do, Pri ❤️";
+
+}
+
+    document.getElementById(
+        "greeting"
+    ).innerText =
+    greeting;
+
+}
+
+updateGreeting();
+
+</script>
 </body>
 
 </html>
