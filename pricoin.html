@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+   content="width=device-width, initial-scale=1.0">
+
+<title>PriCoin 🪙</title>
+
+<link rel="stylesheet"
+      href="../style.css">
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<section class="hero">
+
+```
+<h1>🪙 PriCoin</h1>
+
+<p>
+
+    The world's most emotionally backed cryptocurrency.
+
+</p>
+```
+
+</section>
+
+<div class="cards">
+
+```
+<div class="card">
+
+    <h2>💰 Price</h2>
+
+    <p id="price">
+        ₹143.72
+    </p>
+
+</div>
+
+<div class="card">
+
+    <h2>📈 24h Change</h2>
+
+    <p id="change">
+        +12.4%
+    </p>
+
+</div>
+
+<div class="card">
+
+    <h2>👥 Holders</h2>
+
+    <p>
+        2
+    </p>
+
+</div>
+
+<div class="card">
+
+    <h2>❤️ Market Sentiment</h2>
+
+    <p>
+        Extremely Bullish
+    </p>
+
+</div>
+```
+
+</div>
+
+<section class="hero whitepaper">
+
+```
+<h2>📜 Whitepaper</h2>
+
+<p>
+
+    PriCoin is backed by:
+
+    <br><br>
+
+    • Delusion
+
+    <br>
+
+    • Spotify Playlists
+
+    <br>
+
+    • Sleep Deprivation
+
+    <br>
+
+    • Feelings
+
+    <br>
+
+    • Late Night Conversations
+
+    <br><br>
+
+    This is not financial advice.
+
+</p>
+```
+
+</section>
+
+<section class="hero">
+
+```
+<h2>⛏️ Mine PriCoin</h2>
+
+<p id="wallet">
+
+    Wallet:
+    0 PriCoins
+
+</p>
+
+<button
+class="mine-btn"
+onclick="mineCoin()">
+
+    ⛏️ Mine PriCoin
+
+</button>
+```
+
+</section>
+
+<script>
+
+const prices = [
+
+    69.42,
+    143.72,
+    187.33,
+    420.69,
+    777.77,
+    999.99,
+    1337.00
+
+];
+
+const changes = [
+
+    "+2.1%",
+    "+12.4%",
+    "+69%",
+    "+420%",
+    "-3.2%",
+    "+0.69%"
+
+];
+
+document.getElementById(
+    "price"
+).innerText =
+
+"₹" +
+
+prices[
+    Math.floor(
+        Math.random() *
+        prices.length
+    )
+];
+
+document.getElementById(
+    "change"
+).innerText =
+
+changes[
+    Math.floor(
+        Math.random() *
+        changes.length
+    )
+];
+
+let wallet =
+
+parseInt(
+    localStorage.getItem(
+        "pricoinWallet"
+    )
+) || 0;
+
+document.getElementById(
+    "wallet"
+).innerText =
+
+"Wallet: " +
+wallet +
+" PriCoins";
+
+function mineCoin(){
+
+    wallet++;
+
+    localStorage.setItem(
+        "pricoinWallet",
+        wallet
+    );
+
+    document.getElementById(
+        "wallet"
+    ).innerText =
+
+    "Wallet: " +
+    wallet +
+    " PriCoins";
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1994,4 +1994,230 @@ button.btn{
     transform:
     translateY(-3px);
 
+
+    /* PRICOIN WALLET */
+
+#wallet{
+
+    font-size:1.5rem;
+
+    font-weight:700;
+
+    color:#ffd700;
+
+    margin:20px 0;
+
+    text-shadow:
+    0 0 15px rgba(255,215,0,.4);
+
+}
+
+/* PRICOIN PRICE */
+
+#price{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:#00ff88;
+
+    text-shadow:
+    0 0 20px rgba(0,255,136,.3);
+
+}
+
+#change{
+
+    font-size:1.8rem;
+
+    font-weight:700;
+
+    color:#7cffb3;
+
+}
+
+/* MINE BUTTON */
+
+.mine-btn{
+
+    margin-top:15px;
+
+    padding:15px 35px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffd700,
+        #ffb700
+    );
+
+    box-shadow:
+    0 0 25px rgba(255,215,0,.3);
+
+    transition:.3s;
+
+}
+
+.mine-btn:hover{
+
+    transform:
+    translateY(-3px);
+
+    box-shadow:
+    0 0 35px rgba(255,215,0,.5);
+
+}
+
+.mine-btn:active{
+
+    transform:
+    scale(.97);
+
+}
+}
+
+/* ===== PRICOIN ===== */
+
+#price{
+
+    font-size:2.2rem;
+
+    font-weight:700;
+
+    color:#00ff88;
+
+    text-shadow:
+    0 0 20px rgba(0,255,136,.3);
+
+}
+
+#change{
+
+    font-size:1.8rem;
+
+    font-weight:700;
+
+    color:#7cffb3;
+
+}
+
+/* WALLET */
+
+#wallet{
+
+    font-size:1.8rem;
+
+    font-weight:700;
+
+    color:#ffd700;
+
+    margin:20px 0;
+
+    text-shadow:
+    0 0 20px rgba(255,215,0,.4);
+
+}
+
+/* MINE BUTTON */
+
+.mine-btn{
+
+    margin-top:15px;
+
+    padding:15px 35px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+    color:#111;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffd700,
+        #ffb700
+    );
+
+    box-shadow:
+    0 0 25px rgba(255,215,0,.3);
+
+    transition:.3s;
+
+}
+
+.mine-btn:hover{
+
+    transform:
+    translateY(-3px);
+
+    box-shadow:
+    0 0 35px rgba(255,215,0,.5);
+
+}
+
+.mine-btn:active{
+
+    transform:
+    scale(.97);
+
+}
+
+/* WHITEPAPER */
+
+.whitepaper{
+
+    max-width:700px;
+
+    margin:0 auto;
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    #price{
+
+        font-size:1.8rem;
+
+    }
+
+    #change{
+
+        font-size:1.4rem;
+
+    }
+
+    #wallet{
+
+        font-size:1.4rem;
+
+    }
+
+    .mine-btn{
+
+        width:100%;
+
+    }
+
 }
