@@ -70,9 +70,17 @@
 
 </div>
 
-    <p id="quote">
+   <button
+class="read-letter-btn"
+onclick="toggleLetter()">
 
-        Sometimes I think Homer, Dante, and Tolkien were all writing about the same thing.
+💌 Read Letter
+
+</button>
+
+<p id="quote" style="display:none;">
+
+    Sometimes I think Homer, Dante, and Tolkien were all writing about the same thing.
 Homer called it Ithaca the place a weary traveler longs for after years of wandering. Dante called it Paradise,the light waiting beyond every dark forest. Tolkien called it the Shire,a home so ordinary and precious that its absence is only understood once it is lost.
 And perhaps that is why meeting you feels so impossible to explain.
 Not because I spent years searching for you.
@@ -83,7 +91,7 @@ I had already made peace with the idea that some people are meant to keep wander
 Like the first star seen after a night so long you forgot morning existed.
 Like coming home to a place I had never been before.
 
-    </p>
+</p>
 
 </section>
 
@@ -547,11 +555,7 @@ updateGreeting();
 
 <script>
 
-if(
-    localStorage.getItem(
-        "priPopupSeen"
-    )
-){
+function closePopup(){
 
     document.getElementById(
         "welcomePopup"
@@ -560,17 +564,44 @@ if(
 
 }
 
-function closePopup(){
+</script>
 
+<script>
+
+function toggleLetter(){
+
+    const letter =
     document.getElementById(
-        "welcomePopup"
-    ).style.display =
-    "none";
-
-    localStorage.setItem(
-        "priPopupSeen",
-        "true"
+        "quote"
     );
+
+    const btn =
+    document.querySelector(
+        ".read-letter-btn"
+    );
+
+    if(
+        letter.style.display ===
+        "none"
+    ){
+
+        letter.style.display =
+        "block";
+
+        btn.innerText =
+        "💌 Hide Letter";
+
+    }
+
+    else{
+
+        letter.style.display =
+        "none";
+
+        btn.innerText =
+        "💌 Read Letter";
+
+    }
 
 }
 

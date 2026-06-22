@@ -1957,3 +1957,41 @@ button.btn{
 
 }
 
+.read-letter-btn{
+
+    margin-top:20px;
+
+    padding:15px 30px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff7cb3,
+        #ff4f8b
+    );
+
+    box-shadow:
+    0 0 25px rgba(255,79,139,.25);
+
+    transition:.3s;
+
+}
+
+.read-letter-btn:hover{
+
+    transform:
+    translateY(-3px);
+
+}
