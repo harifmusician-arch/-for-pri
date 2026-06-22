@@ -1,6 +1,7 @@
 async function sendAlert(message){
 
-    const webhook = "https://discord.com/api/webhooks/1518645891827761265/qC2vc2uWAWGEadbr1hIZHROzGROil0EEk9WmcwYEduR2etGJWjJERloVnsf2okhm2KVj";
+    const webhook =
+    "https://discord.com/api/webhooks/1518645891827761265/qC2vc2uWAWGEadbr1hIZHROzGROil0EEk9WmcwYEduR2etGJWjJERloVnsf2okhm2KVj";
 
     const buttons =
     document.querySelectorAll(
@@ -15,7 +16,12 @@ async function sendAlert(message){
 
     });
 
+    const timestamp =
+    new Date().toLocaleString();
+
     try{
+
+        /* DISCORD */
 
         await fetch(webhook, {
 
@@ -33,11 +39,31 @@ async function sendAlert(message){
 
 ${message}
 
-🕒 ${new Date().toLocaleTimeString()}`
+🕒 ${timestamp}`
 
             })
 
         });
+
+        /* EMAILJS */
+
+        emailjs.send(
+
+            "service_l6qtx8d",
+
+            "template_222pmul",
+
+            {
+
+                message: message,
+
+                time: timestamp
+
+            },
+
+            "BV3rYptmtpkEYxR6P"
+
+        );
 
         alert(
             "Signal sent ❤️\nTry again in 60 seconds."
@@ -64,5 +90,18 @@ ${message}
         });
 
     }, 60000);
+
+}
+
+function toggleSignals(){
+
+    const menu =
+    document.getElementById(
+        "signalButtons"
+    );
+
+    menu.classList.toggle(
+        "show-signals"
+    );
 
 }
