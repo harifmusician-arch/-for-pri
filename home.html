@@ -16,6 +16,38 @@
 
 <body>
 
+    <div id="welcomePopup" class="popup-overlay">
+
+    <div class="popup-box">
+
+        <h2>💌 Before You Explore</h2>
+
+        <p>
+
+            Hey Pri,
+
+            <br><br>
+
+            I know we're not official yet, and I don't want this website to make you feel pressured or overwhelmed.
+
+            I just wanted to make something special for you.
+
+            So no pressure, no expectations.
+
+            Bas enjoy karo aap, okay? ❤️
+
+        </p>
+
+        <button onclick="closePopup()">
+
+            Okay ❤️
+
+        </button>
+
+    </div>
+
+</div>
+
 <div class="stars"></div>
 
 
@@ -510,6 +542,37 @@ else{
 }
 
 updateGreeting();
+
+</script>
+
+<script>
+
+if(
+    localStorage.getItem(
+        "priPopupSeen"
+    )
+){
+
+    document.getElementById(
+        "welcomePopup"
+    ).style.display =
+    "none";
+
+}
+
+function closePopup(){
+
+    document.getElementById(
+        "welcomePopup"
+    ).style.display =
+    "none";
+
+    localStorage.setItem(
+        "priPopupSeen",
+        "true"
+    );
+
+}
 
 </script>
 </body>

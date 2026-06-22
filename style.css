@@ -1869,4 +1869,91 @@ button.btn{
 
 }
 
+/* WELCOME POPUP */
+
+.popup-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    rgba(0,0,0,.75);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+    padding:20px;
+
+}
+
+.popup-box{
+
+    max-width:550px;
+
+    width:100%;
+
+    padding:30px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    background:
+    rgba(20,20,20,.95);
+
+    border:
+    1px solid rgba(255,255,255,.1);
+
+    backdrop-filter:
+    blur(20px);
+
+    box-shadow:
+    0 0 40px rgba(255,124,179,.2);
+
+}
+
+.popup-box h2{
+
+    margin-bottom:20px;
+
+}
+
+.popup-box p{
+
+    line-height:1.8;
+
+    color:#ddd;
+
+}
+
+.popup-box button{
+
+    margin-top:20px;
+
+    padding:12px 25px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-weight:600;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff7cb3,
+        #ff4f8b
+    );
+
+}
 
