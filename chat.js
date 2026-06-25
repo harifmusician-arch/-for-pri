@@ -1,5 +1,18 @@
 const socket = io("https://for-pri.onrender.com");
 
+/* ===========================
+ELEMENTS
+=========================== */
+
+const messages = document.getElementById("messages");
+const input = document.getElementById("messageInput");
+const sendBtn = document.getElementById("sendBtn");
+const typingStatus = document.getElementById("typingStatus");
+const status = document.getElementById("status");
+
+let typingTimeout;
+
+
 async function loadMessages() {
 
     const response = await fetch(
@@ -73,17 +86,6 @@ if (e.key === "Enter") {
 
 });
 
-/* ===========================
-ELEMENTS
-=========================== */
-
-const messages = document.getElementById("messages");
-const input = document.getElementById("messageInput");
-const sendBtn = document.getElementById("sendBtn");
-const typingStatus = document.getElementById("typingStatus");
-const status = document.getElementById("status");
-
-let typingTimeout;
 
 /* ===========================
 TIME
