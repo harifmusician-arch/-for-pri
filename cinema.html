@@ -90,63 +90,7 @@ onclick="startMovieNight()">
 
 </section>
 
-<script>
-
-async function startMovieNight(){
-
-    try{
-
-        const response =
-
-        await fetch(
-
-            "http://localhost:3000/create-room",
-
-            {
-
-                method:"POST"
-
-            }
-
-        );
-
-        const data =
-
-        await response.json();
-
-        alert(
-
-            "🎉 Room Created!\n\n" +
-
-            data.roomId
-
-        );
-
-        window.open(
-
-            data.roomUrl,
-
-            "_blank"
-
-        );
-
-    }
-
-    catch(error){
-
-        alert(
-
-            "Couldn't connect to Pri Cinema 😭"
-
-        );
-
-        console.error(error);
-
-    }
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 

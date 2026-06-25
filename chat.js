@@ -1,27 +1,21 @@
-const socket = io("http://localhost:3000");
+const socket = io("https://for-pri.onrender.com");
 
-async function loadMessages(){
+async function loadMessages() {
 
     const response = await fetch(
-
-        "http://localhost:3000/messages"
-
+        "https://for-pri.onrender.com/messages"
     );
 
     const data = await response.json();
 
     messages.innerHTML = "";
 
-    data.forEach(msg=>{
+    data.forEach(msg => {
 
         addMessage(
-
             msg.username,
-
             msg.message,
-
-            msg.username===username
-
+            msg.username === username
         );
 
     });
