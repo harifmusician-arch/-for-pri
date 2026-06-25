@@ -2322,3 +2322,200 @@ button.btn{
 .h5{height:170px;}
 .h6{height:210px;}
 .h7{height:250px;}
+
+
+
+
+/* ========================= */
+/* PRI CINEMA */
+/* ========================= */
+
+.cinema-hero{
+
+    text-align:center;
+
+    padding:100px 20px 70px;
+
+}
+
+.cinema-hero h1{
+
+    font-size:3.5rem;
+
+    color:white;
+
+    margin-bottom:20px;
+
+    text-shadow:
+    0 0 30px rgba(255,255,255,.15);
+
+}
+
+.cinema-hero p{
+
+    color:#d9d9d9;
+
+    font-size:1.2rem;
+
+    line-height:1.8;
+
+}
+
+.start-movie-btn{
+
+    margin-top:40px;
+
+    padding:18px 45px;
+
+    border:none;
+
+    border-radius:60px;
+
+    cursor:pointer;
+
+    font-size:1.2rem;
+
+    font-weight:700;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff4f8b,
+        #ff7cb3
+    );
+
+    box-shadow:
+    0 0 35px rgba(255,79,139,.4);
+
+    transition:.35s;
+
+}
+
+.start-movie-btn:hover{
+
+    transform:
+    translateY(-4px)
+    scale(1.03);
+
+    box-shadow:
+    0 0 50px rgba(255,79,139,.6);
+
+}
+
+.platforms{
+
+    max-width:1200px;
+
+    margin:70px auto;
+
+    padding:0 20px;
+
+}
+
+.platforms h2{
+
+    text-align:center;
+
+    color:white;
+
+    margin-bottom:35px;
+
+    font-size:2rem;
+
+}
+
+.platform-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
+    gap:25px;
+
+}
+
+.platform-card{
+
+    background:
+    rgba(255,255,255,.05);
+
+    border:
+    1px solid rgba(255,255,255,.08);
+
+    border-radius:25px;
+
+    padding:35px 20px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    backdrop-filter:
+    blur(20px);
+
+    transition:.3s;
+
+    box-shadow:
+    0 0 20px rgba(255,255,255,.05);
+
+}
+
+.platform-card:hover{
+
+    transform:
+    translateY(-8px);
+
+    border-color:
+    rgba(255,124,179,.5);
+
+    box-shadow:
+    0 0 35px rgba(255,79,139,.2);
+
+}
+
+.platform-card{
+
+    font-size:3rem;
+
+}
+
+.platform-card h3{
+
+    margin-top:15px;
+
+    color:white;
+
+    font-size:1.1rem;
+
+}
+
+@media(max-width:768px){
+
+    .cinema-hero{
+
+        padding:70px 20px 40px;
+
+    }
+
+    .cinema-hero h1{
+
+        font-size:2.5rem;
+
+    }
+
+    .platform-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .start-movie-btn{
+
+        width:100%;
+
+    }
+
+}

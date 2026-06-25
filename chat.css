@@ -1,0 +1,396 @@
+/* ========================= */
+/* PRI CHAT */
+/* ========================= */
+
+body{
+
+    margin:0;
+
+}
+
+.chat-container{
+
+    width:min(900px,95%);
+
+    height:85vh;
+
+    margin:40px auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:0 0 35px rgba(255,255,255,.05);
+
+}
+
+.chat-header{
+
+    padding:20px 30px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.chat-header h1{
+
+    color:white;
+
+    margin:0;
+
+}
+
+.chat-header p{
+
+    color:#86efac;
+
+    margin-top:8px;
+
+    font-size:.95rem;
+
+}
+
+.messages{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.message{
+
+    max-width:70%;
+
+    padding:14px 18px;
+
+    border-radius:18px;
+
+    color:white;
+
+    line-height:1.5;
+
+    animation:fadeUp .25s ease;
+
+}
+
+.me{
+
+    align-self:flex-end;
+
+    background:linear-gradient(
+        135deg,
+        #ff4f8b,
+        #ff7cb3
+    );
+
+}
+
+.them{
+
+    align-self:flex-start;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.time{
+
+    margin-top:8px;
+
+    font-size:.75rem;
+
+    opacity:.7;
+
+}
+
+.chat-input{
+
+    display:flex;
+
+    gap:15px;
+
+    padding:20px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+.chat-input input{
+
+    flex:1;
+
+    padding:15px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    font-size:1rem;
+
+}
+
+.chat-input input::placeholder{
+
+    color:#bdbdbd;
+
+}
+
+.chat-input button{
+
+    width:65px;
+
+    border:none;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    font-size:1.3rem;
+
+    background:linear-gradient(
+        135deg,
+        #ff4f8b,
+        #ff7cb3
+    );
+
+    color:white;
+
+    transition:.25s;
+
+}
+
+.chat-input button:hover{
+
+    transform:scale(1.06);
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .chat-container{
+
+        width:100%;
+
+        height:100vh;
+
+        margin:0;
+
+        border-radius:0;
+
+    }
+
+    .message{
+
+        max-width:85%;
+
+    }
+
+}
+#typingStatus{
+
+    height:22px;
+
+    margin-top:5px;
+
+    color:#ff9ec7;
+
+    font-size:.9rem;
+
+    font-style:italic;
+
+}
+
+/* ========================= */
+/* LOGIN MODAL */
+/* ========================= */
+
+.login-modal{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.75);
+
+    backdrop-filter:blur(10px);
+
+    z-index:999999;
+
+}
+
+.login-card{
+
+    width:380px;
+
+    max-width:90%;
+
+    padding:40px;
+
+    border-radius:25px;
+
+    background:#181818;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    box-shadow:
+    0 0 50px rgba(255,79,139,.2);
+
+    text-align:center;
+
+    animation:pop .35s ease;
+
+}
+
+.login-card h1{
+
+    color:white;
+
+    margin-bottom:10px;
+
+}
+
+.login-card p{
+
+    color:#bdbdbd;
+
+    margin-bottom:30px;
+
+}
+
+.login-card input{
+
+    width:100%;
+
+    box-sizing:border-box;
+
+    padding:16px;
+
+    margin-bottom:20px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:15px;
+
+    background:#2b2b2b;
+
+    color:white;
+
+    font-size:1rem;
+
+}
+
+.login-card input::placeholder{
+
+    color:#888;
+
+}
+
+.login-card button{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    font-weight:bold;
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        #ff4f8b,
+        #ff7cb3
+    );
+
+    transition:.25s;
+
+}
+
+.login-card button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+@keyframes pop{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.85);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}

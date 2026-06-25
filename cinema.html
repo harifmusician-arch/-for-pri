@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>🎬 Pri Cinema</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<section class="cinema-hero">
+
+    <h1>🎬 Pri Cinema</h1>
+
+    <p>
+
+        Your private movie theater.
+
+        <br><br>
+
+        Grab some popcorn. ❤️
+
+    </p>
+
+   <button
+class="start-movie-btn"
+onclick="startMovieNight()">
+
+    🍿 Start Movie Night
+
+</button>
+
+</section>
+
+<section class="platforms">
+
+    <h2>Choose Platform</h2>
+
+    <div class="platform-grid">
+
+        <div class="platform-card">
+            📺
+            <h3>Netflix</h3>
+        </div>
+
+        <div class="platform-card">
+            ⭐
+            <h3>Disney+ Hotstar</h3>
+        </div>
+
+        <div class="platform-card">
+            🎬
+            <h3>Prime Video</h3>
+        </div>
+
+        <div class="platform-card">
+            ▶️
+            <h3>YouTube</h3>
+        </div>
+
+        <div class="platform-card">
+            🎵
+            <h3>Spotify</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="hero">
+
+    <h2>❤️ Status</h2>
+
+    <p>
+
+        Waiting for movie night...
+
+    </p>
+
+</section>
+
+<script>
+
+async function startMovieNight(){
+
+    try{
+
+        const response =
+
+        await fetch(
+
+            "http://localhost:3000/create-room",
+
+            {
+
+                method:"POST"
+
+            }
+
+        );
+
+        const data =
+
+        await response.json();
+
+        alert(
+
+            "🎉 Room Created!\n\n" +
+
+            data.roomId
+
+        );
+
+        window.open(
+
+            data.roomUrl,
+
+            "_blank"
+
+        );
+
+    }
+
+    catch(error){
+
+        alert(
+
+            "Couldn't connect to Pri Cinema 😭"
+
+        );
+
+        console.error(error);
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>
