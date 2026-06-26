@@ -1,5 +1,4 @@
-const multer = require("multer");
-const path = require("path");
+
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
@@ -27,29 +26,7 @@ cors: {
 app.use(cors());
 app.use(express.json());
 
-const storage = multer.diskStorage({
 
-    destination: (req, file, cb) => {
-
-        cb(null, "uploads/");
-
-    },
-
-    filename: (req, file, cb) => {
-
-        cb(
-
-            null,
-
-            Date.now() +
-
-            path.extname(file.originalname)
-
-        );
-
-    }
-
-});
 
 const upload = multer({
 
@@ -178,37 +155,6 @@ catch(error){
 
 });
 
-app.post(
-
-    "/upload",
-
-    upload.single("image"),
-
-    (req, res) => {
-
-        if (!req.file) {
-
-            return res.status(400).json({
-
-                success: false
-
-            });
-
-        }
-
-        res.json({
-
-            success: true,
-
-            imageUrl:
-
-            `https://for-pri.onrender.com/uploads/${req.file.filename}`
-
-        });
-
-    }
-
-);
 
 /* ===========================
 SOCKET.IO
