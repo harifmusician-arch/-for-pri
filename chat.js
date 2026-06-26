@@ -1,3 +1,9 @@
+if(localStorage.getItem("loggedIn") !== "true"){
+
+    window.location.href = "login.html";
+
+}
+
 const socket = io("https://for-pri.onrender.com");
 
 /* ===========================
