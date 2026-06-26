@@ -28,11 +28,7 @@ app.use(express.json());
 
 
 
-const upload = multer({
 
-    storage
-
-});
 
 app.use(
 
