@@ -213,6 +213,18 @@ socket.on("typing", username => {
 
 });
 
+socket.on("call-user", data => {
+
+    socket.broadcast.emit("incoming-call", data);
+
+});
+
+socket.on("call-user", data => {
+
+    socket.broadcast.emit("incoming-call", data);
+
+});
+
 socket.on("disconnect", () => {
 
     console.log("💔 User Disconnected");

@@ -21,6 +21,7 @@ console.log("imageBtn =", imageBtn);
 console.log("imageInput =", imageInput);
 const typingStatus = document.getElementById("typingStatus");
 const status = document.getElementById("status");
+const callBtn = document.getElementById("callBtn");
 
 imageBtn.onclick = () => {
 
@@ -334,6 +335,32 @@ imageInput.addEventListener("change", async () => {
         alert("Upload failed!");
 
         console.error(err);
+
+    }
+
+});
+
+callBtn.onclick = () => {
+
+    socket.emit("call-user", {
+
+        from: username
+
+    });
+
+};
+
+socket.on("incoming-call", data => {
+
+    const answer = confirm(
+
+        `${data.from} is calling you ❤️\n\nAccept?`
+
+    );
+
+    if (answer) {
+
+        alert("Call accepted! 🎉");
 
     }
 
