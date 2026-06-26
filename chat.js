@@ -1,3 +1,5 @@
+alert("chat.js loaded");
+
 if(localStorage.getItem("loggedIn") !== "true"){
 
     window.location.href = "login.html";
@@ -15,9 +17,18 @@ const input = document.getElementById("messageInput");
 const sendBtn = document.getElementById("sendBtn");
 const imageBtn = document.getElementById("imageBtn");
 const imageInput = document.getElementById("imageInput");
+console.log("imageBtn =", imageBtn);
+console.log("imageInput =", imageInput);
 const typingStatus = document.getElementById("typingStatus");
 const status = document.getElementById("status");
 
+imageBtn.onclick = () => {
+
+    console.log("📷 Camera clicked");
+
+    imageInput.click();
+
+};
 let typingTimeout;
 
 
@@ -33,11 +44,26 @@ async function loadMessages() {
 
     data.forEach(msg => {
 
-        addMessage(
-            msg.username,
-            msg.message,
-            msg.username === username
-        );
+        if (
+            msg.message &&
+            msg.message.startsWith("https://res.cloudinary.com")
+        ) {
+
+            addImage(
+                msg.username,
+                msg.message,
+                msg.username === username
+            );
+
+        } else {
+
+            addMessage(
+                msg.username,
+                msg.message,
+                msg.username === username
+            );
+
+        }
 
     });
 
@@ -181,18 +207,48 @@ RECEIVE MESSAGE
 
 socket.on("chat-message", data => {
 
+    if (data.image) {
 
-addMessage(
+        addImage(
+            data.username,
+            data.image,
+            data.username === username
+        );
 
-    data.username,
-    data.text,
-    data.username === username
+    } else {
 
-);
+        addMessage(
+            data.username,
+            data.text,
+            data.username === username
+        );
 
+    }
 
 });
 
+function addImage(name, imageUrl, mine) {
+
+    const message = document.createElement("div");
+
+    message.className = "message " + (mine ? "me" : "them");
+
+    message.innerHTML = `
+        <strong>${name}</strong>
+        <div>
+            <img
+                src="${imageUrl}"
+                class="chat-image"
+                style="max-width:250px;border-radius:12px;margin-top:8px;max-height:300px;">
+        </div>
+        <div class="time">${currentTime()}</div>
+    `;
+
+    messages.appendChild(message);
+
+    messages.scrollTop = messages.scrollHeight;
+
+}
 /* ===========================
 TYPING
 =========================== */
@@ -235,38 +291,50 @@ if (count === 1) {
 
 });
 
-imageBtn.onclick = () => {
 
-    imageInput.click();
 
-};
+imageInput.addEventListener("change", async () => {
 
-imageInput.onchange = async () => {
+    alert("Image selected!");
 
     const file = imageInput.files[0];
 
-    if(!file) return;
+    if (!file) return;
 
     const formData = new FormData();
 
-    formData.append("image", file);
+    formData.append("file", file);
+    formData.append("upload_preset", "prichat");
 
-    const response = await fetch(
+    try {
 
-        "https://for-pri.onrender.com/upload",
+        const response = await fetch(
+            "https://api.cloudinary.com/v1_1/dxwjqna0m/image/upload",
+            {
+                method: "POST",
+                body: formData
+            }
+        );
 
-        {
+        const data = await response.json();
 
-            method: "POST",
+        alert("Upload finished!");
 
-            body: formData
+        console.log(data);
+        socket.emit("chat-message", {
 
-        }
+    username,
 
-    );
+    image: data.secure_url
 
-    const data = await response.json();
+});
 
-    console.log(data);
+    } catch (err) {
 
-};
+        alert("Upload failed!");
+
+        console.error(err);
+
+    }
+
+});
