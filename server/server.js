@@ -179,11 +179,13 @@ socket.on("chat-message", data => {
 
         [
 
-            data.username,
+           [
+    data.username,
 
-            data.text,
+    data.text || data.image,
 
-            new Date().toISOString()
+    new Date().toISOString()
+]
 
         ]
 
