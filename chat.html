@@ -23,7 +23,7 @@
 
 <body>
 
-    <div id="loginModal" class="login-modal">
+<div id="loginModal" class="login-modal">
 
     <div class="login-card">
 
@@ -72,6 +72,7 @@
                 🟢 Online
 
             </p>
+
             <p id="typingStatus"></p>
 
         </div>
@@ -86,6 +87,29 @@
 
     <div class="chat-input">
 
+        <!-- Hidden Image Picker -->
+        <input
+
+        type="file"
+
+        id="imageInput"
+
+        accept="image/*"
+
+        hidden>
+
+        <!-- Camera Button -->
+        <button
+
+        id="imageBtn"
+
+        title="Send Image">
+
+            📷
+
+        </button>
+
+        <!-- Message Box -->
         <input
 
         id="messageInput"
@@ -94,6 +118,7 @@
 
         placeholder="Type a message...">
 
+        <!-- Send Button -->
         <button
 
         id="sendBtn">
@@ -106,10 +131,10 @@
 
 </div>
 
-
 <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
 
 <script src="chat.js"></script>
 
 </body>
+
 </html>

@@ -13,6 +13,8 @@ ELEMENTS
 const messages = document.getElementById("messages");
 const input = document.getElementById("messageInput");
 const sendBtn = document.getElementById("sendBtn");
+const imageBtn = document.getElementById("imageBtn");
+const imageInput = document.getElementById("imageInput");
 const typingStatus = document.getElementById("typingStatus");
 const status = document.getElementById("status");
 
@@ -232,3 +234,39 @@ if (count === 1) {
 
 
 });
+
+imageBtn.onclick = () => {
+
+    imageInput.click();
+
+};
+
+imageInput.onchange = async () => {
+
+    const file = imageInput.files[0];
+
+    if(!file) return;
+
+    const formData = new FormData();
+
+    formData.append("image", file);
+
+    const response = await fetch(
+
+        "https://for-pri.onrender.com/upload",
+
+        {
+
+            method: "POST",
+
+            body: formData
+
+        }
+
+    );
+
+    const data = await response.json();
+
+    console.log(data);
+
+};
