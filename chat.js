@@ -342,6 +342,8 @@ imageInput.addEventListener("change", async () => {
 
 callBtn.onclick = () => {
 
+    console.log("📞 Call button clicked");
+
     socket.emit("call-user", {
 
         from: username
