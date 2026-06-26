@@ -156,10 +156,19 @@ catch(error){
 SOCKET.IO
 =========================== */
 
+const users = {};
+
 io.on("connection", socket => {
 
 
 console.log("❤️ User Connected");
+socket.on("register-user", username => {
+
+    users[username] = socket.id;
+
+    console.log(username, "registered:", socket.id);
+
+});
 
 io.emit(
 

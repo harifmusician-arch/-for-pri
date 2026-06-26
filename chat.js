@@ -7,7 +7,17 @@ if(localStorage.getItem("loggedIn") !== "true"){
 }
 
 const socket = io("https://for-pri.onrender.com");
+socket.on("connect", () => {
 
+    const savedName = localStorage.getItem("priUsername");
+
+    if (savedName) {
+
+        socket.emit("register-user", savedName);
+
+    }
+
+});
 /* ===========================
 ELEMENTS
 =========================== */
@@ -31,6 +41,22 @@ imageBtn.onclick = () => {
 
 };
 let typingTimeout;
+let localStream;
+let peerConnection;
+
+const configuration = {
+
+    iceServers: [
+
+        {
+
+            urls: "stun:stun.l.google.com:19302"
+
+        }
+
+    ]
+
+};
 
 
 async function loadMessages() {
@@ -102,6 +128,8 @@ username = nameInput.value.trim();
 if (!username) return;
 
 localStorage.setItem("priUsername", username);
+
+socket.emit("register-user", username);
 
 loginModal.style.display = "none";
 loadMessages();
@@ -340,15 +368,43 @@ imageInput.addEventListener("change", async () => {
 
 });
 
-callBtn.onclick = () => {
+callBtn.onclick = async () => {
 
-    console.log("📞 Call button clicked");
+    try {
 
-    socket.emit("call-user", {
+        const stream = await navigator.mediaDevices.getUserMedia({
 
-        from: username
+            audio: true,
 
-    });
+            video: false
+
+        });
+
+       localStream = stream;
+
+peerConnection = new RTCPeerConnection(configuration);
+
+localStream.getTracks().forEach(track => {
+
+    peerConnection.addTrack(track, localStream);
+
+});
+
+        alert("🎤 Microphone connected!");
+
+        socket.emit("call-user", {
+
+            from: username
+
+        });
+
+    } catch (err) {
+
+        alert("Microphone permission denied!");
+
+        console.error(err);
+
+    }
 
 };
 
