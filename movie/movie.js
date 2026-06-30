@@ -233,4 +233,56 @@ movieInput.addEventListener("input", () => {
 
 });
 
+
+pickMovieBtn.onclick = () => {
+
+    const unwatched = movies.filter(movie => movie.watched === 0);
+
+    if(unwatched.length === 0){
+
+        alert("🎉 You've watched everything!");
+
+        return;
+
+    }
+
+    const movie = unwatched[
+
+        Math.floor(Math.random() * unwatched.length)
+
+    ];
+
+    pickedMovie.innerHTML = `
+
+        <h2>🍿 Tonight's Movie</h2>
+
+        <img
+            class="poster"
+            src="https://image.tmdb.org/t/p/w300${movie.poster}"
+        >
+
+        <h2>${movie.title}</h2>
+
+        <p>⭐ ${(movie.rating ?? 0).toFixed(1)}</p>
+
+        <button id="watchedBtn">
+            ✅ Mark as Watched
+        </button>
+
+        <button id="rerollBtn">
+            🎲 Pick Again
+        </button>
+
+    `;
+
+    document.getElementById("rerollBtn").onclick = () => {
+
+        pickMovieBtn.click();
+
+    };
+
+};
+
+
+
 loadMovies();
