@@ -374,6 +374,65 @@ socket.on("delete-movie", id => {
     );
 
 });
+socket.on("mark-watched", id => {
+
+    console.log("Mark watched:", id);
+
+    db.run(
+
+        `UPDATE movies
+
+        SET watched = 1,
+
+            lastWatched = ?
+
+        WHERE id = ?`,
+
+        [
+
+            new Date().toISOString(),
+
+            id
+
+        ],
+
+        err => {
+
+            if(err){
+
+                console.error(err);
+
+                return;
+
+            }
+
+            db.all(
+
+                "SELECT * FROM movies ORDER BY id DESC",
+
+                [],
+
+                (err, rows) => {
+
+                    if(err){
+
+                        console.error(err);
+
+                        return;
+
+                    }
+
+                    io.emit("movie-list", rows);
+
+                }
+
+            );
+
+        }
+
+    );
+
+});
 
 console.log("❤️ User Connected");
 socket.on("register-user", username => {

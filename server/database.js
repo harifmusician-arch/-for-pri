@@ -45,6 +45,8 @@ db.serialize(() => {
 
             favorite INTEGER DEFAULT 0,
 
+            lastWatched TEXT,
+
             addedAt TEXT
 
         )
