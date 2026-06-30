@@ -10,6 +10,9 @@ require("dotenv").config();
 
 const app = express();
 const server = http.createServer(app);
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "..")));
 
 const io = new Server(server, {
 
@@ -47,6 +50,16 @@ app.get("/", (req, res) => {
 
 res.send("🎬 Pri Cinema Backend Running ❤️");
 
+
+});
+
+/* ===========================
+LOAD MOVIES
+=========================== */
+
+app.get("/movies", (req, res) => {
+
+    res.json(movies);
 
 });
 
@@ -157,9 +170,19 @@ SOCKET.IO
 =========================== */
 
 const users = {};
+let movies = [];
 
 io.on("connection", socket => {
 
+
+
+socket.on("add-movie", movie => {
+
+    movies.push(movie);
+
+    io.emit("movie-list", movies);
+
+});
 
 console.log("❤️ User Connected");
 socket.on("register-user", username => {
