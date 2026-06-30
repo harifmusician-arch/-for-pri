@@ -41,15 +41,47 @@ cancelMovieBtn.onclick = () => {
     movieModal.style.display = "none";
 
 };
-searchMovieBtn.onclick = () => {
+searchMovieBtn.onclick = async () => {
 
     const title = movieInput.value.trim();
 
     if(!title) return;
 
-    socket.emit("add-movie", {
+    const response = await fetch(
 
-        title
+        `https://for-pri.onrender.com/search-movie?q=${encodeURIComponent(title)}`
+
+    );
+
+    const results = await response.json();
+
+    if(results.length === 0){
+
+        alert("Movie not found 😢");
+
+        return;
+
+    }
+
+    const movie = results[0];
+
+    socket.emit("add-movie",{
+
+        tmdbId: movie.id,
+
+        title: movie.title,
+
+        poster: movie.poster_path,
+
+        backdrop: movie.backdrop_path,
+
+        overview: movie.overview,
+
+        genres: movie.genre_ids.join(","),
+
+        rating: movie.vote_average,
+
+        year: movie.release_date
 
     });
 
@@ -66,7 +98,20 @@ function renderMovies(){
 
         div.className = "movie";
 
-        div.innerHTML = `🎬 ${movie.title}`;
+        div.innerHTML = `
+
+            <img
+                class="poster"
+                src="https://image.tmdb.org/t/p/w300${movie.poster}"
+            >
+
+            <h3>${movie.title}</h3>
+
+            <p>⭐ ${movie.rating.toFixed(1)}</p>
+
+            <p>${movie.year.substring(0,4)}</p>
+
+        `;
 
         movieList.appendChild(div);
 

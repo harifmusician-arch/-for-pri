@@ -244,19 +244,53 @@ io.on("connection", socket => {
 
 socket.on("add-movie", movie => {
 
-    db.run(
+   db.run(
 
-        `INSERT INTO movies
-        (title, addedAt)
-        VALUES (?, ?)`,
+    `INSERT INTO movies(
 
-        [
+        tmdbId,
 
-            movie.title,
+        title,
 
-            new Date().toISOString()
+        poster,
 
-        ],
+        backdrop,
+
+        overview,
+
+        genres,
+
+        rating,
+
+        year,
+
+        addedAt
+
+    )
+
+    VALUES(?,?,?,?,?,?,?,?,?)`,
+
+    [
+
+        movie.tmdbId,
+
+        movie.title,
+
+        movie.poster,
+
+        movie.backdrop,
+
+        movie.overview,
+
+        movie.genres,
+
+        movie.rating,
+
+        movie.year,
+
+        new Date().toISOString()
+
+    ],
 
         function(err){
 

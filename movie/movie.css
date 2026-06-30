@@ -115,3 +115,43 @@ MOVIE MODAL
     justify-content:center;
 
 }
+
+.poster{
+
+    width:180px;
+
+    border-radius:14px;
+
+    margin-bottom:12px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+
+}
+
+.movie{
+
+    width:220px;
+
+    background:#222;
+
+    border-radius:18px;
+
+    padding:15px;
+
+    text-align:center;
+
+    color:white;
+
+}
+
+#movieList{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    justify-content:center;
+
+}
