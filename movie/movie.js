@@ -8,6 +8,8 @@ const pickedMovie = document.getElementById("pickedMovie");
 const movieModal = document.getElementById("movieModal");
 
 const movieInput = document.getElementById("movieInput");
+const searchResults = document.getElementById("searchResults");
+let searchTimeout;
 
 const searchMovieBtn = document.getElementById("searchMovieBtn");
 
@@ -124,6 +126,64 @@ socket.on("movie-list", list => {
     movies = list;
 
     renderMovies();
+
+});
+
+movieInput.addEventListener("input", () => {
+
+    console.log("Typing:", movieInput.value);
+
+    clearTimeout(searchTimeout);
+
+    const query = movieInput.value.trim();
+
+    if(query.length < 2){
+
+        searchResults.innerHTML = "";
+
+        return;
+
+    }
+
+    searchTimeout = setTimeout(async () => {
+
+        const response = await fetch(
+
+            `https://for-pri.onrender.com/search-movie?q=${encodeURIComponent(query)}`
+
+        );
+
+        const results = await response.json();
+
+        searchResults.innerHTML = "";
+
+        results.slice(0,5).forEach(movie => {
+
+            const div = document.createElement("div");
+
+            div.className = "searchResult";
+
+            div.innerHTML = `
+
+                <img
+                    src="https://image.tmdb.org/t/p/w92${movie.poster_path}"
+                >
+
+                <div>
+
+                    <strong>${movie.title}</strong><br>
+
+                    ${movie.release_date?.substring(0,4) || ""}
+
+                </div>
+
+            `;
+
+            searchResults.appendChild(div);
+
+        });
+
+    },300);
 
 });
 
