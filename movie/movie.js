@@ -179,6 +179,36 @@ movieInput.addEventListener("input", () => {
 
             `;
 
+            div.onclick = () => {
+
+    socket.emit("add-movie",{
+
+        tmdbId: movie.id,
+
+        title: movie.title,
+
+        poster: movie.poster_path,
+
+        backdrop: movie.backdrop_path,
+
+        overview: movie.overview,
+
+        genres: movie.genre_ids.join(","),
+
+        rating: movie.vote_average,
+
+        year: movie.release_date
+
+    });
+
+    movieModal.style.display = "none";
+
+    searchResults.innerHTML = "";
+
+    movieInput.value = "";
+
+};
+
             searchResults.appendChild(div);
 
         });
