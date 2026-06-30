@@ -1,0 +1,117 @@
+body{
+
+    margin:0;
+
+    background:#111;
+
+    color:white;
+
+    font-family:Arial;
+
+}
+
+.container{
+
+    width:900px;
+
+    margin:auto;
+
+    padding:40px;
+
+}
+
+button{
+
+    padding:14px 22px;
+
+    margin-right:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+}
+
+#movieList{
+
+    margin-top:30px;
+
+}
+
+.movie{
+
+    background:#222;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    margin-bottom:10px;
+
+}
+
+/* ===========================
+MOVIE MODAL
+=========================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.6);
+
+}
+
+.modal-content{
+
+    width:420px;
+
+    background:#222;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    text-align:center;
+
+}
+
+.modal-content input{
+
+    width:100%;
+
+    padding:12px;
+
+    font-size:17px;
+
+    border-radius:10px;
+
+    border:none;
+
+    margin:20px 0;
+
+    box-sizing:border-box;
+
+}
+
+.modal-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+    justify-content:center;
+
+}

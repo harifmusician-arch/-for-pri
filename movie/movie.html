@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Movie Night ❤️</title>
+
+    <link rel="stylesheet" href="movie.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🍿 Movie Night</h1>
+
+        <button id="addMovieBtn">
+            ➕ Add Movie
+        </button>
+
+        <button id="pickMovieBtn">
+            🎲 Pick For Us
+        </button>
+
+        <h2>Library</h2>
+
+        <div id="movieList"></div>
+
+    </div>
+
+    <!-- Add Movie Popup -->
+
+<div id="movieModal" class="modal">
+
+    <div class="modal-content">
+
+        <h2>🍿 Add Movie</h2>
+
+        <input
+            type="text"
+            id="movieInput"
+            placeholder="Search movie..."
+        >
+
+        <div class="modal-buttons">
+
+            <button id="searchMovieBtn">
+                Search
+            </button>
+
+            <button id="cancelMovieBtn">
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="movie.js"></script>
+
+</body>
+
+</html>
