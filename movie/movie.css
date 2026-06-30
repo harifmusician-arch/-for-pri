@@ -155,3 +155,89 @@ MOVIE MODAL
     justify-content:center;
 
 }
+
+/* ===========================
+MOBILE
+=========================== */
+
+@media (max-width:768px){
+
+    .container{
+
+        width:100%;
+
+        padding:20px;
+
+        box-sizing:border-box;
+
+    }
+
+    h1{
+
+        font-size:30px;
+
+        text-align:center;
+
+    }
+
+    button{
+
+        width:100%;
+
+        margin:10px 0;
+
+        font-size:18px;
+
+        padding:16px;
+
+    }
+
+    #movieList{
+
+        display:grid;
+
+        grid-template-columns:1fr 1fr;
+
+        gap:15px;
+
+    }
+
+    .movie{
+
+        width:auto;
+
+        padding:12px;
+
+    }
+
+    .poster{
+
+        width:100%;
+
+        max-width:150px;
+
+    }
+
+    .modal-content{
+
+        width:90%;
+
+        padding:20px;
+
+    }
+
+    .modal-buttons{
+
+        flex-direction:column;
+
+    }
+
+    .modal-buttons button{
+
+        width:100%;
+
+        margin:0;
+
+    }
+
+}
