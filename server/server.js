@@ -57,9 +57,27 @@ res.send("🎬 Pri Cinema Backend Running ❤️");
 LOAD MOVIES
 =========================== */
 
-app.get("/movie", (req, res) => {
+app.get("/movies", (req, res) => {
 
-    res.json(movies);
+    db.all(
+
+        "SELECT * FROM movies ORDER BY id DESC",
+
+        [],
+
+        (err, rows) => {
+
+            if(err){
+
+                return res.status(500).json(err);
+
+            }
+
+            res.json(rows);
+
+        }
+
+    );
 
 });
 
@@ -170,7 +188,7 @@ SOCKET.IO
 =========================== */
 
 const users = {};
-let movies = [];
+
 
 io.on("connection", socket => {
 
@@ -178,9 +196,55 @@ io.on("connection", socket => {
 
 socket.on("add-movie", movie => {
 
-    movies.push(movie);
+    db.run(
 
-    io.emit("movie-list", movies);
+        `INSERT INTO movies
+        (title, addedAt)
+        VALUES (?, ?)`,
+
+        [
+
+            movie.title,
+
+            new Date().toISOString()
+
+        ],
+
+        function(err){
+
+            if(err){
+
+                console.error(err);
+
+                return;
+
+            }
+
+            db.all(
+
+                "SELECT * FROM movies ORDER BY id DESC",
+
+                [],
+
+                (err, rows) => {
+
+                    if(err){
+
+                        console.error(err);
+
+                        return;
+
+                    }
+
+                    io.emit("movie-list", rows);
+
+                }
+
+            );
+
+        }
+
+    );
 
 });
 
