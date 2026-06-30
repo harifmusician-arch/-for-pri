@@ -57,7 +57,7 @@ res.send("🎬 Pri Cinema Backend Running ❤️");
 LOAD MOVIES
 =========================== */
 
-app.get("/movies", (req, res) => {
+app.get("/movie", (req, res) => {
 
     res.json(movies);
 
