@@ -113,9 +113,25 @@ function renderMovies(){
 
             <p>${movie.year.substring(0,4)}</p>
 
+            <button
+                class="deleteMovie"
+                data-id="${movie.id}"
+            >
+                🗑 Remove
+            </button>
+
         `;
 
         movieList.appendChild(div);
+        div.querySelector(".deleteMovie").onclick = () => {
+
+    if(confirm(`Remove "${movie.title}"?`)){
+
+        socket.emit("delete-movie", movie.id);
+
+    }
+
+};
 
     });
 

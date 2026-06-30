@@ -329,6 +329,51 @@ socket.on("add-movie", movie => {
     );
 
 });
+socket.on("delete-movie", id => {
+
+    db.run(
+
+        "DELETE FROM movies WHERE id = ?",
+
+        [id],
+
+        err => {
+
+            if(err){
+
+                console.error(err);
+
+                return;
+
+            }
+
+            db.all(
+
+                "SELECT * FROM movies ORDER BY id DESC",
+
+                [],
+
+                (err, rows) => {
+
+                    if(err){
+
+                        console.error(err);
+
+                        return;
+
+                    }
+
+                    io.emit("movie-list", rows);
+
+                }
+
+            );
+
+        }
+
+    );
+
+});
 
 console.log("❤️ User Connected");
 socket.on("register-user", username => {
