@@ -76,15 +76,23 @@ MOVIE MODAL
 
 .modal-content{
 
-    width:420px;
+    width:650px;
 
-    background:#222;
+    max-width:92vw;
 
-    border-radius:18px;
+    max-height:85vh;
 
-    padding:30px;
+    overflow-y:auto;
 
-    text-align:center;
+    background:#1b1b1b;
+
+    border-radius:22px;
+
+    padding:28px;
+
+    border:1px solid #333;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
 
 }
 
@@ -239,5 +247,43 @@ MOBILE
         margin:0;
 
     }
+
+}
+
+#movieInput{
+
+    width:100%;
+
+    padding:16px;
+
+    font-size:18px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:14px;
+
+    background:#2a2a2a;
+
+    color:white;
+
+}
+
+#movieInput::placeholder{
+
+    color:#888;
+
+}
+
+#searchResults{
+
+    margin-top:18px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
 
 }

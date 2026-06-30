@@ -109,20 +109,52 @@ function renderMovies(){
 
             <h3>${movie.title}</h3>
 
-            <p>⭐ ${movie.rating.toFixed(1)}</p>
+            <p>⭐ ${(movie.rating ?? 0).toFixed(1)}</p>
 
-            <p>${movie.year.substring(0,4)}</p>
+<p>${movie.year ? movie.year.substring(0,4) : ""}</p>
+${
+    movie.watched
+    ?
+    `
+        <p class="watched">
+            ✅ Last watched<br>
+            ${new Date(movie.lastWatched).toLocaleDateString()}
+        </p>
+    `
+    :
+    `
+        <button
+            class="watchMovie"
+            data-id="${movie.id}"
+        >
+            ✅ Mark Watched
+        </button>
+    `
+}
 
-            <button
-                class="deleteMovie"
-                data-id="${movie.id}"
-            >
-                🗑 Remove
-            </button>
+<button
+    class="deleteMovie"
+    data-id="${movie.id}"
+>
+    🗑 Remove
+</button>
+
+        
 
         `;
 
         movieList.appendChild(div);
+        const watchBtn = div.querySelector(".watchMovie");
+
+if(watchBtn){
+
+    watchBtn.onclick = () => {
+
+        socket.emit("mark-watched", movie.id);
+
+    };
+
+}
         div.querySelector(".deleteMovie").onclick = () => {
 
     if(confirm(`Remove "${movie.title}"?`)){
@@ -275,11 +307,19 @@ pickMovieBtn.onclick = () => {
 
     `;
 
-    document.getElementById("rerollBtn").onclick = () => {
+    document.getElementById("watchedBtn").onclick = () => {
 
-        pickMovieBtn.click();
+    socket.emit("mark-watched", movie.id);
 
-    };
+    pickedMovie.innerHTML = "";
+
+};
+
+document.getElementById("rerollBtn").onclick = () => {
+
+    pickMovieBtn.click();
+
+};
 
 };
 
