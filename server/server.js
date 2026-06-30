@@ -82,6 +82,54 @@ app.get("/movies", (req, res) => {
 });
 
 /* ===========================
+SEARCH TMDB
+=========================== */
+
+app.get("/search-movie", async (req, res) => {
+
+    try{
+
+        const response = await axios.get(
+
+            "https://api.themoviedb.org/3/search/movie",
+
+            {
+
+                headers: {
+
+                    Authorization: `Bearer ${process.env.TMDB_BEARER}`
+
+                },
+
+                params: {
+
+                    query: req.query.q
+
+                }
+
+            }
+
+        );
+
+        res.json(response.data.results);
+
+    }
+
+    catch(err){
+
+        console.error(err.response?.data || err.message);
+
+        res.status(500).json({
+
+            error:"TMDB Error"
+
+        });
+
+    }
+
+});
+
+/* ===========================
 LOAD ALL MESSAGES
 =========================== */
 
