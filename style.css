@@ -2636,4 +2636,38 @@ LOGIN PAGE
 
 }
 
+#password{
+
+    width:320px;
+
+    max-width:90%;
+
+    padding:15px 18px;
+
+    margin-top:25px;
+
+    border:none;
+
+    border-radius:14px;
+
+    outline:none;
+
+    background:#222;
+
+    color:white;
+
+    font-size:17px;
+
+    text-align:center;
+
+    transition:.25s;
+
+}
+
+#password:focus{
+
+    box-shadow:0 0 0 3px rgba(255,77,141,.4);
+
+}
+
 
