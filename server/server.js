@@ -5,7 +5,7 @@ const axios = require("axios");
 const http = require("http");
 const { Server } = require("socket.io");
 const db = require("./database");
-
+const session = require("express-session");
 require("dotenv").config();
 
 const app = express();
@@ -29,6 +29,22 @@ cors: {
 app.use(cors());
 app.use(express.json());
 
+app.use(session({
+
+    secret: process.env.SESSION_SECRET || "super-secret",
+
+    resave: false,
+
+    saveUninitialized: false,
+
+    cookie: {
+
+        maxAge: 1000 * 60 * 60 * 24 * 30
+
+    }
+
+}));
+
 
 
 
@@ -41,6 +57,44 @@ app.use(
 
 );
 
+app.post("/login", (req, res) => {
+
+    const { password } = req.body;
+
+    if(password === process.env.SITE_PASSWORD){
+
+        req.session.loggedIn = true;
+
+        return res.json({
+
+            success: true
+
+        });
+
+    }
+
+    res.status(401).json({
+
+        success: false,
+
+        message: "Wrong password"
+
+    });
+
+});
+
+function requireLogin(req, res, next){
+
+    if(req.session.loggedIn){
+
+        return next();
+
+    }
+
+    res.redirect("/");
+
+}
+
 /* ===========================
 HOME
 =========================== */
@@ -50,6 +104,36 @@ app.get("/", (req, res) => {
 
 res.send("🎬 Pri Cinema Backend Running ❤️");
 
+
+});
+
+app.get("/intro.html", requireLogin, (req, res) => {
+
+    res.sendFile(path.join(__dirname, "..", "intro.html"));
+
+});
+
+app.get("/home.html", requireLogin, (req, res) => {
+
+    res.sendFile(path.join(__dirname, "..", "home.html"));
+
+});
+
+app.get("/cinema.html", requireLogin, (req, res) => {
+
+    res.sendFile(path.join(__dirname, "..", "cinema.html"));
+
+});
+
+app.get("/chat.html", requireLogin, (req, res) => {
+
+    res.sendFile(path.join(__dirname, "..", "chat.html"));
+
+});
+
+app.get("/pet.html", requireLogin, (req, res) => {
+
+    res.sendFile(path.join(__dirname, "..", "pet.html"));
 
 });
 
