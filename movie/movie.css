@@ -555,3 +555,20 @@ PICKED MOVIE
     }
 
 }
+.alreadyAdded{
+
+    margin-top:6px;
+
+    color:#5be37a;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+}
+
+.searchResult:has(.alreadyAdded){
+
+    opacity:.65;
+
+}

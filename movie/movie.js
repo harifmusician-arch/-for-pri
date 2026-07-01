@@ -179,6 +179,11 @@ socket.on("movie-list", list => {
     renderMovies();
 
 });
+socket.on("movie-exists", () => {
+
+    alert("🍿 This movie is already in your library ❤️");
+
+});
 
 movieInput.addEventListener("input", () => {
 
@@ -208,11 +213,14 @@ movieInput.addEventListener("input", () => {
 
         searchResults.innerHTML = "";
 
+        const libraryIds = movies.map(m => m.tmdbId);
+
         results.slice(0,5).forEach(movie => {
 
             const div = document.createElement("div");
 
             div.className = "searchResult";
+            const alreadyAdded = libraryIds.includes(movie.id);
 
             div.innerHTML = `
 
@@ -224,13 +232,21 @@ movieInput.addEventListener("input", () => {
 
                     <strong>${movie.title}</strong><br>
 
-                    ${movie.release_date?.substring(0,4) || ""}
+${movie.release_date?.substring(0,4) || ""}
+
+${
+    alreadyAdded
+    ? `<div class="alreadyAdded">✅ Already in Library</div>`
+    : ""
+}
 
                 </div>
 
             `;
 
-            div.onclick = () => {
+            if(!alreadyAdded){
+
+    div.onclick = () => {
 
     socket.emit("add-movie",{
 
@@ -250,7 +266,7 @@ movieInput.addEventListener("input", () => {
 
         year: movie.release_date
 
-    });
+    }); }
 
     movieModal.style.display = "none";
 
@@ -262,11 +278,12 @@ movieInput.addEventListener("input", () => {
 
             searchResults.appendChild(div);
 
-        });
+        });  
 
     },300);
 
-});
+});  
+
 
 
 pickMovieBtn.onclick = () => {

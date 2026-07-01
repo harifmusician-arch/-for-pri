@@ -328,6 +328,30 @@ io.on("connection", socket => {
 
 socket.on("add-movie", movie => {
 
+    db.get(
+
+    "SELECT * FROM movies WHERE tmdbId = ?",
+
+    [movie.tmdbId],
+
+    (err, row) => {
+
+        if(err){
+
+            console.error(err);
+
+            return;
+
+        }
+
+        if(row){
+
+            socket.emit("movie-exists");
+
+            return;
+
+        }
+
    db.run(
 
     `INSERT INTO movies(
@@ -402,15 +426,17 @@ socket.on("add-movie", movie => {
 
                     }
 
-                    io.emit("movie-list", rows);
+                                    io.emit("movie-list", rows);
 
-                }
+            }
 
-            );
+        );
 
-        }
+    }
 
-    );
+);
+
+});
 
 });
 socket.on("delete-movie", id => {
