@@ -109,9 +109,12 @@ function renderMovies(){
 
             <h3>${movie.title}</h3>
 
-            <p>⭐ ${(movie.rating ?? 0).toFixed(1)}</p>
+            <p class="movieInfo">
+    ⭐ ${(movie.rating ?? 0).toFixed(1)}
+    •
+    ${movie.year ? movie.year.substring(0,4) : "—"}
+</p>
 
-<p>${movie.year ? movie.year.substring(0,4) : ""}</p>
 ${
     movie.watched
     ?
@@ -284,34 +287,70 @@ pickMovieBtn.onclick = () => {
 
     ];
 
-    pickedMovie.innerHTML = `
+    pickedMovie.style.display = "flex";
 
-        <h2>🍿 Tonight's Movie</h2>
+pickedMovie.innerHTML = `
 
-        <img
-            class="poster"
-            src="https://image.tmdb.org/t/p/w300${movie.poster}"
-        >
+<button class="closePicker">
+    ✕
+</button>
+
+<div class="pickedCard">
+
+    <img
+        class="pickedPoster"
+        src="https://image.tmdb.org/t/p/w500${movie.poster}"
+    >
+
+    <div class="pickedContent">
 
         <h2>${movie.title}</h2>
 
-        <p>⭐ ${(movie.rating ?? 0).toFixed(1)}</p>
+        <p>
+            ⭐ ${(movie.rating ?? 0).toFixed(1)}
+            •
+            ${movie.year ? movie.year.substring(0,4) : ""}
+        </p>
+
+        <p>
+
+            ${
+                movie.overview ||
+                "No description available."
+
+            }
+
+        </p>
 
         <button id="watchedBtn">
-            ✅ Mark as Watched
+
+            ✅ Mark Watched
+
         </button>
 
         <button id="rerollBtn">
+
             🎲 Pick Again
+
         </button>
 
-    `;
+    </div>
 
-    document.getElementById("watchedBtn").onclick = () => {
+</div>
+
+`;
+
+    document.querySelector(".closePicker").onclick = () => {
+
+    pickedMovie.style.display = "none";
+
+};
+
+document.getElementById("watchedBtn").onclick = () => {
 
     socket.emit("mark-watched", movie.id);
 
-    pickedMovie.innerHTML = "";
+    pickedMovie.style.display = "none";
 
 };
 
