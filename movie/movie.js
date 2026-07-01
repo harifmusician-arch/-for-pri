@@ -213,14 +213,15 @@ movieInput.addEventListener("input", () => {
 
         searchResults.innerHTML = "";
 
-        const libraryIds = movies.map(m => m.tmdbId);
+        const libraryIds = movies.map(m => Number(m.tmdbId));
+        
 
         results.slice(0,5).forEach(movie => {
 
             const div = document.createElement("div");
 
             div.className = "searchResult";
-            const alreadyAdded = libraryIds.includes(movie.id);
+            const alreadyAdded = libraryIds.includes(Number(movie.id));
 
             div.innerHTML = `
 
@@ -244,37 +245,39 @@ ${
 
             `;
 
-            if(!alreadyAdded){
+           if(!alreadyAdded){
 
     div.onclick = () => {
 
-    socket.emit("add-movie",{
+        socket.emit("add-movie",{
 
-        tmdbId: movie.id,
+            tmdbId: movie.id,
 
-        title: movie.title,
+            title: movie.title,
 
-        poster: movie.poster_path,
+            poster: movie.poster_path,
 
-        backdrop: movie.backdrop_path,
+            backdrop: movie.backdrop_path,
 
-        overview: movie.overview,
+            overview: movie.overview,
 
-        genres: movie.genre_ids.join(","),
+            genres: movie.genre_ids.join(","),
 
-        rating: movie.vote_average,
+            rating: movie.vote_average,
 
-        year: movie.release_date
+            year: movie.release_date
 
-    }); }
+        });
 
-    movieModal.style.display = "none";
+        movieModal.style.display = "none";
 
-    searchResults.innerHTML = "";
+        searchResults.innerHTML = "";
 
-    movieInput.value = "";
+        movieInput.value = "";
 
-};
+    };
+
+}
 
             searchResults.appendChild(div);
 
