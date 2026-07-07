@@ -13,6 +13,7 @@
 
 <link rel="stylesheet"
       href="../style.css">
+      <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
 </head>
 
@@ -117,8 +118,66 @@ function checkAnswers(){
         q3 === "4 Mar 2026"
     ){
 
-        window.location.href =
-        "final-question.html";
+        confetti({
+
+    particleCount: 180,
+
+    spread: 90,
+
+    origin: {
+
+        y: 0.6
+
+    }
+
+});
+
+        document.body.innerHTML = `
+
+<div class="stars"></div>
+
+<section class="hero">
+
+    <h1>✨ Correct! ✨</h1>
+
+    <p id="quote">
+
+        I knew you'd remember ❤️
+
+        <br><br>
+
+        There's just one last thing...
+
+    </p>
+
+    <h2 id="countdown">
+
+        Unlocking in 3...
+
+    </h2>
+
+</section>
+
+`;
+
+let seconds = 3;
+
+const timer = setInterval(() => {
+
+    seconds--;
+
+    document.getElementById("countdown").textContent =
+        `Unlocking in ${seconds}...`;
+
+    if(seconds === 0){
+
+        clearInterval(timer);
+
+        window.location.href = "final-question.html";
+
+    }
+
+},1000);
 
     }
 
