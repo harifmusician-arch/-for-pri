@@ -15,7 +15,7 @@ loginBtn.onclick = () => {
         window.location.href = "chat.html";
 
     } else {
-
+    
         error.innerText = "❌ Wrong Password";
 
     }
